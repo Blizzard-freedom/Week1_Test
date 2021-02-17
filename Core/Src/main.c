@@ -92,7 +92,7 @@ int main(void)
 	GPIO_PinState SwitchState1[2]; //Now,Last
 	GPIO_PinState SwitchState2[2];
 	GPIO_PinState SwitchState3[2];
-	uint16_t LED1_HalfPeriod = 2000; //1Hz
+	uint16_t LED1_HalfPeriod = 1000; //0.5Hz
 	uint32_t TimeStamp = 0;
 	uint32_t TimeStamp2 = 0;
 	uint32_t ButtonTimeStamp = 100;
@@ -114,17 +114,17 @@ int main(void)
 			SwitchState1[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
 			if (SwitchState1[1] == GPIO_PIN_SET
 					&& SwitchState1[0] == GPIO_PIN_RESET) {
-				if (LED1_HalfPeriod == 2000 && HAL_GetTick()-LED_ON_time >=200) {
-					LED1_HalfPeriod = 1000;
-					LED_ON_time = HAL_GetTick();
-				} else if(LED1_HalfPeriod == 1000 && HAL_GetTick()-LED_ON_time >=200) {
+				if (LED1_HalfPeriod == 1000 && HAL_GetTick()-LED_ON_time >=200) {
 					LED1_HalfPeriod = 500;
 					LED_ON_time = HAL_GetTick();
 				} else if(LED1_HalfPeriod == 500 && HAL_GetTick()-LED_ON_time >=200) {
-					LED1_HalfPeriod = 333;
+					LED1_HalfPeriod = 250;
 					LED_ON_time = HAL_GetTick();
-				} else if(LED1_HalfPeriod == 333 && HAL_GetTick()-LED_ON_time >=200) {
-					LED1_HalfPeriod = 2000;
+				} else if(LED1_HalfPeriod == 250 && HAL_GetTick()-LED_ON_time >=200) {
+					LED1_HalfPeriod = 167;
+					LED_ON_time = HAL_GetTick();
+				} else if(LED1_HalfPeriod == 167 && HAL_GetTick()-LED_ON_time >=200) {
+					LED1_HalfPeriod = 1000;
 					LED_ON_time = HAL_GetTick();
 				}
 			}

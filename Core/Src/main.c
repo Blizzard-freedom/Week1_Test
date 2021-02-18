@@ -110,7 +110,6 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 		//1
-		if (HAL_GetTick() - ButtonTimeStamp >= 0) {
 			SwitchState1[0] = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_10);
 			if (SwitchState1[1] == GPIO_PIN_SET
 					&& SwitchState1[0] == GPIO_PIN_RESET) {
@@ -129,9 +128,8 @@ int main(void)
 				}
 			}
 			SwitchState1[1] = SwitchState1[0];
-		}
+
 		//2
-		if (HAL_GetTick() - ButtonTimeStamp >= 0) {
 		SwitchState2[0] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3);
 						if (SwitchState2[1] == GPIO_PIN_SET && SwitchState2[0] == GPIO_PIN_RESET && HAL_GetTick()-LED_ON_time >=160) {
 						if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_6) == GPIO_PIN_SET) {
@@ -144,10 +142,8 @@ int main(void)
 							}
 							}
 					SwitchState2[1] = SwitchState2[0];
-					ButtonTimeStamp = HAL_GetTick();
-		}
+
 		//3
-		if (HAL_GetTick() - ButtonTimeStamp >= 0) {
 					SwitchState3[0] = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_5);
 					if (SwitchState3[1] == GPIO_PIN_SET && SwitchState3[0] == GPIO_PIN_RESET) {
 						if (LED3_ON ==500 && LED3_OFF==1500 && HAL_GetTick()-LED_ON_time >=150) {
@@ -161,7 +157,6 @@ int main(void)
 						}
 					}
 					SwitchState3[1] = SwitchState3[0];
-				}
 
 		if (HAL_GetTick() - TimeStamp >= LED1_HalfPeriod) //ms
 				{
